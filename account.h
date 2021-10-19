@@ -6,7 +6,7 @@ class Account {
     public:
 
         // initialize constructor with default variable name
-        Account(string acc_name, int initialBalance)
+        Account(std::string acc_name, int initialBalance)
         : accountName{acc_name} { //member initializer list
 
             // Validate the value for balance initialized
@@ -17,19 +17,9 @@ class Account {
             }
 
         }
-
-        //perfom deposit action
-        void deposit(int depositAmount) {
-            
-            if(depositAmount > 0) //check if amount being deposited is greater than 0
-            {
-                // sum the balance with the deposit amount to get the new balance
-                balance = balance + depositAmount;
-            }
-        }
   
         //get users name
-        string getName() const {
+        std::string getName() const {
             return accountName;
         }
 
@@ -39,12 +29,45 @@ class Account {
         }
 
         //set name got from user
-        void setName(string acc_name) {
+        void setName(std::string acc_name) {
             accountName = acc_name;
+        }
+
+         //perfom deposit action
+        void deposit(int depositAmount) {
+            
+            if(depositAmount > 0) //check if amount being deposited is greater than 0
+            {
+                // sum the balance with the deposit amount to get the new balance
+                balance = balance + depositAmount;
+                std::cout << std::endl << "Amount of Kshs." << depositAmount << " successfully deposited to " << getName() << "'s account" << std::endl;
+                std::cout << getName() << " your new account balance is Kshs." << getBalance() << std::endl;
+
+            }else{
+                std::cout << "Invalid amount selected"; 
+            }
+        }
+
+        // function to facilitate money withdrawal 
+        void withraw(int withdrawAmount){
+
+            if(withdrawAmount > balance) //check if amount being withdrawn is greater than balance
+            {
+                // Display relevant message to this regard
+                std::cout << "Withrawal amount exceeds account balance";
+   
+            }else{
+                
+                balance = balance - withdrawAmount;
+
+                std::cout << "Withdrawal of amount: Kshs." << withdrawAmount << " successful" << std::endl << "New Balance is: Kshs." << balance << std::endl;
+   
+            }
+
         }
     
     private:
-        string accountName;
+        std::string accountName;
         int balance{0};
 
 };
