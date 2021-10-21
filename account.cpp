@@ -1,19 +1,17 @@
 #include "account.h"
 using namespace std;
 
-int main() {
-    // Initiliaze the object
-    Account account{"Jane Doe", 20}; 
-    // Account account1{"Punisher", -30}; 
 
-    string acc_name;
+// function declaration and definition for displaying accounts objects
+void displayAccount(Account accountToDisplay){
+        string acc_name;
     int depositAMount;
     int withrawAmount;
 
     // to get the different options from the user
     int option;
 
-    cout << "Hi " << account.getName() << ", your account balance as of today is: Kshs." << account.getBalance() << endl;
+    cout << "Hi " << accountToDisplay.getName() << ", your account balance for account " << accountToDisplay.getAccountNUmber() << " as of today is: Kshs." << accountToDisplay.getBalance() << endl;
     // cout << "Hi " << account1.getName() << ", your account balance as of today is: Kshs." << account1.getBalance() << endl;
 
     cout << "What would you like to do today?" << endl << "1. Deposit" << endl << "2.Withdraw" << endl;
@@ -24,46 +22,35 @@ int main() {
         // Option for deposit
     case 1:
         // Prompt and read name from user
-        cout << endl << account.getName()  << " please enter the amount you wish to deposit:"<< endl;
+        cout << endl << accountToDisplay.getName()  << " please enter the amount you wish to deposit:"<< endl;
         // getline(cin, acc_name);
         cin >> depositAMount;
-        account.deposit(depositAMount);
+        accountToDisplay.deposit(depositAMount);
         break;
     
     // Option for deposit
     case 2:
         // Prompt and read name from user
-        cout << endl << account.getName()  << " please enter the amount you wish to withraw:"<< endl;
+        cout << endl << accountToDisplay.getName()  << " please enter the amount you wish to withraw:"<< endl;
         // getline(cin, acc_name);
         cin >> withrawAmount;
-        account.withraw(withrawAmount);
+        accountToDisplay.withraw(withrawAmount);
         break;
     
     default:
         cout << "Invalid option selected";
         break;
     }
+}
 
+int main() {
+    // Initiliaze the object
+    Account account{1234567, "Jane", "Doe", 20}; 
+    Account account1{7654321, "Frank", "Castle", 1000};
 
-
-
-    // cout << endl << "Adding Kshs." << depositAMount << " to " << account.getName() << "'s account" << endl;
-    // cout << account.getName() << " your new acccount balance is Kshs." << account.getBalance() << endl;
-    // cout << account1.getName() << " your new acccount balance is Kshs." << account1.getBalance() << endl;
-
-
-
-    // // Prompt and read name from user
-    // cout << endl << account1.getName()  << " please enter the amount you wish to deposit:"<< endl;
-    // // getline(cin, acc_name);
-    // cin >> depositAMount;
-
-    // account1.deposit(depositAMount);
-
-    // cout << endl << "Adding Kshs." << depositAMount << " to " << account1.getName() << "'s account" << endl;
-    // cout << account1.getName() << " your new acccount balance is Kshs." << account1.getBalance() << endl;
-    // cout << account.getName() << " your new acccount balance is Kshs." << account.getBalance() << endl;
-
-
+    // call display account function for each object
+    displayAccount(account);
+    displayAccount(account1);
 
 }
+

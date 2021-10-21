@@ -6,8 +6,8 @@ class Account {
     public:
 
         // initialize constructor with default variable name
-        Account(std::string acc_name, int initialBalance)
-        : accountName{acc_name} { //member initializer list
+        Account(unsigned int account_number, std::string fName, std::string lName, int initialBalance)
+        : accountNumber{account_number}, accountName{fName + " " + lName} { //member initializer list
 
             // Validate the value for balance initialized
             if(initialBalance > 0 ) //check if vvalue entered is greater than 0
@@ -18,6 +18,10 @@ class Account {
 
         }
   
+        // get account number
+        unsigned int getAccountNUmber() const {
+            return accountNumber;
+        }
         //get users name
         std::string getName() const {
             return accountName;
@@ -26,6 +30,11 @@ class Account {
         //get user balance
         int getBalance() const {
             return balance;
+        }
+
+        //set accountnumber got from user
+        void setAccountNumber(unsigned int acc_number) {
+            accountNumber = acc_number;
         }
 
         //set name got from user
@@ -67,7 +76,10 @@ class Account {
         }
     
     private:
+        std::string fisrtName;
+        std::string lastName;
+        unsigned int accountNumber;
         std::string accountName;
-        int balance{0};
+        double balance{0.00};
 
 };
